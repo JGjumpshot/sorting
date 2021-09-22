@@ -13,6 +13,9 @@ def selection_sort(my_list):
             my_list[i], my_list[select_min] = my_list[select_min], my_list[i]
     return my_list
 
+def insertion_sort():
+    
+
 def main():
     print(selection_sort(lyst))
 
