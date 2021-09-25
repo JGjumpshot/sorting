@@ -77,7 +77,7 @@ def mergesort(my_list):
 
 
 def quicksort(lyst):
-    """Quick sorting by picking a pivot point and appending lower values than pivot to lower array and greater values to greater array"""
+    """Quick sort"""
     length = len(lyst)
     if length <= 1:
         return lyst
@@ -93,17 +93,26 @@ def quicksort(lyst):
             items_lower.append(item)
     return quicksort(items_lower) + [pivot] + quicksort(items_greater)
 
-def stopwatch(function, my_list, target):
+def stopwatch(function, my_list):
     """stopwatch function"""
-    start = time.perf_counter()
-    function(my_list, target)
-    stop = time.perf_counter()
-    print(f"tarting {function.__name__}\n  {function.__name__} duration: {stop - start}")
+    if is_sorted(function(my_list)) is True:
+        try:
+            start = time.perf_counter()
+            function(my_list)
+            stop = time.perf_counter()
+            if function.__name__ == "sorted":
+                print(f"starting timsort\ntimsort duration: {stop - start}\n")
+            else:
+                print(f"starting {function.__name__}\n{function.__name__} duration: {stop - start}\n")
+        except:
+            return False
 
 def main():
     """Main function"""
-    if is_sorted(lyst) == True:
-
-    
+    stopwatch(selection_sort, selection_copy)
+    stopwatch(insertion_sort, insertion_copy)
+    stopwatch(mergesort, merge_copy)
+    stopwatch(quicksort, quick_copy)
+    stopwatch(sorted, tim_copy)
 if __name__ == "__main__":
     main()
